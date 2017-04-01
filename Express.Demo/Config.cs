@@ -18,8 +18,7 @@ namespace Express.Demo {
             !assemblyName.StartsWith("System") &&
             !assemblyName.StartsWith("Microsoft") &&
             !assemblyName.StartsWith("nunit") &&
-            !assemblyName.StartsWith("Shouldly") &&
-            assemblyName != "WithIt.Tests.dll";
+            !assemblyName.StartsWith("Shouldly");
 
         public bool NamespaceFilter(string @namespace) =>
             true;
