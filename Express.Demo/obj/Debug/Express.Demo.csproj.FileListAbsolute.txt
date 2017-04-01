@@ -1,0 +1,7 @@
+C:\Git\Express\Express.Demo\bin\Debug\Express.Demo.dll
+C:\Git\Express\Express.Demo\bin\Debug\Express.Demo.pdb
+C:\Git\Express\Express.Demo\bin\Debug\Express.dll
+C:\Git\Express\Express.Demo\bin\Debug\Express.pdb
+C:\Git\Express\Express.Demo\obj\Debug\Express.Demo.csprojResolveAssemblyReference.cache
+C:\Git\Express\Express.Demo\obj\Debug\Express.Demo.dll
+C:\Git\Express\Express.Demo\obj\Debug\Express.Demo.pdb

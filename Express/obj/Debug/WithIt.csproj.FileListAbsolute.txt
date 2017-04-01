@@ -1,0 +1,4 @@
+C:\Git\WithIt\WithIt\bin\Debug\WithIt.dll
+C:\Git\WithIt\WithIt\bin\Debug\WithIt.pdb
+C:\Git\WithIt\WithIt\obj\Debug\WithIt.dll
+C:\Git\WithIt\WithIt\obj\Debug\WithIt.pdb

@@ -1,0 +1,12 @@
+C:\Git\Express\Express.Tests\bin\Debug\Express.Tests.dll
+C:\Git\Express\Express.Tests\bin\Debug\Express.Tests.pdb
+C:\Git\Express\Express.Tests\bin\Debug\Express.Demo.dll
+C:\Git\Express\Express.Tests\bin\Debug\Express.dll
+C:\Git\Express\Express.Tests\bin\Debug\nunit.framework.dll
+C:\Git\Express\Express.Tests\bin\Debug\Shouldly.dll
+C:\Git\Express\Express.Tests\bin\Debug\Express.Demo.pdb
+C:\Git\Express\Express.Tests\bin\Debug\Express.pdb
+C:\Git\Express\Express.Tests\bin\Debug\nunit.framework.xml
+C:\Git\Express\Express.Tests\obj\Debug\Express.Tests.csprojResolveAssemblyReference.cache
+C:\Git\Express\Express.Tests\obj\Debug\Express.Tests.dll
+C:\Git\Express\Express.Tests\obj\Debug\Express.Tests.pdb
