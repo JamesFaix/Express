@@ -22,10 +22,16 @@ namespace Express.Tests {
         public bool NamespaceFilter(string @namespace) =>
             true;
 
+        public bool TypeFilter(Type type) =>
+            true;
+
         public bool PropertyFilter(PropertyInfo property) =>
             true;
 
-        public bool TypeFilter(Type type) =>
+        public bool IndexerFilter(PropertyInfo indexer) =>
+            true;
+
+        public bool VoidMethodFilter(MethodInfo method) =>
             true;
     }
 }

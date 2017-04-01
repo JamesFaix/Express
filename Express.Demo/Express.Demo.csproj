@@ -36,8 +36,8 @@
     <Compile Include="Dog.cs" />
     <Compile Include="BlackBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WithExtensions.cs">
-      <DependentUpon>WithExtensions.tt</DependentUpon>
+    <Compile Include="Extensions.cs">
+      <DependentUpon>Extensions.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -50,9 +50,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WithExtensions.tt">
+    <Content Include="Extensions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WithExtensions.cs</LastGenOutput>
+      <LastGenOutput>Extensions.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

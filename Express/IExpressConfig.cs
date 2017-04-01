@@ -16,5 +16,8 @@ namespace Express {
 
         bool PropertyFilter(PropertyInfo property);
 
+        bool IndexerFilter(PropertyInfo indexer);
+
+        bool VoidMethodFilter(MethodInfo method);
     }
 }

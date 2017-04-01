@@ -18,16 +18,24 @@ namespace Express {
         }
 
         public static IEnumerable<PropertyInfo> GetSettableProperties(this Type type) =>
-            type.GetProperties()
+            type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
                 .Where(p => {
                     var setter = p.GetSetMethod();
                     return setter != null
-                        && setter.IsPublic
-                        && !setter.IsStatic
                         && setter.GetParameters().Length == 1;
                 });
 
-    
-        //TODO: Add method for indexers
+        public static IEnumerable<PropertyInfo> GetSettableIndexers(this Type type) =>
+            type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => {
+                    var setter = p.GetSetMethod();
+                    return setter != null
+                        && setter.GetParameters().Length > 1;
+                });
+
+        public static IEnumerable<MethodInfo> GetVoidMethods(this Type type) =>
+            type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+                .Where(m => m.ReturnType == typeof(void)
+                        && !m.IsSpecialName);
     }
 }

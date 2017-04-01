@@ -1,0 +1,17 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(TargetDir)Express.dll" #>
+<#@ assembly name="$(TargetDir)Express.Demo.dll" #>
+<#@ output extension=".cs" #>
+
+namespace Express.Demo {
+
+    public static class Extensions {    
+
+<#    
+    var config = Express.Demo.Config.Instance;
+    var service = new Express.Service(config);
+#>
+<#= service.GetCode() #>
+    }
+}

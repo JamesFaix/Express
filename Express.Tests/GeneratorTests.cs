@@ -11,7 +11,7 @@ namespace Express.Tests {
 
         [Test]
         public void AssemblyPaths_ShouldReturnCorrectPaths() {
-            var assemblyNames = new Generator(Config.Instance)
+            var assemblyNames = new Service(Config.Instance)
                 .AssemblyPaths
                 .Select(Path.GetFileName)
                 .ToArray();
@@ -23,8 +23,8 @@ namespace Express.Tests {
 
         [Test]
         public void TypeProperties_ShouldReturnCorrectProperties() {
-            var typeProperties = new Generator(Config.Instance)
-               .TypeProperties
+            var typeProperties = new Service(Config.Instance)
+               .TypeText
                .ToArray();
 
             typeProperties.Length.ShouldBe(2);
