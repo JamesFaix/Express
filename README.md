@@ -148,8 +148,10 @@ Replacing initializers with these extension methods does not change the appearan
 3. The same syntax can be used to "initialize" immediately after a constructor (like initializer syntax) or after any method.  
 
 4. Refactoring around the constructor is easier. If using initializers, refactoring to use a Factory instead of a constructor requires more work. Similarly, when debugging, in order to put a breakpoint between a constructor and a following initializer, the initializer must be rewritten as normal property assignments or `Add` method calls.  Using `Set` or `Do` methods simplifies these refactorings.
-    
-###### Refactoring with object initializer
+      
+### Constructor refactoring
+
+##### Refactoring to Factory method with object initializer
 
     var dog = new Dog {
         Name = "Pavlov",
@@ -160,22 +162,49 @@ Replacing initializers with these extension methods does not change the appearan
 All 4 lines must be modified.
 
 	var dog = DogFactory.Create();
-    dog.Name = "Pavlov"; //Set breakpoint here
+    dog.Name = "Pavlov";
     dog.Color = Colors.Brown;
     dog.Height = 33;     
 
-###### Refactoring with `Set[PropertyName]`
+##### Refactoring to Factory method with `Set[PropertyName]`
 
     var dog = new Dog()
         .SetName("Pavlov")
         .SetColor(Colors.Brown)
         .SetHeight(33);
 
-Only the first 2 lines must be modified, and only the 1st if we we're setting a breakpoint.
+Only the first line must be modified.
 
-    var dog = DogFactory.Create();
-    dog = dog.SetName("Pavlov") //Set breakpoint here
+    var dog = DogFactory.Create()
+        .SetName("Pavlov")
         .SetColor(Colors.Brown)
         .SetHeight(33);
 
-____
+##### Inserting breakpoint with object initializer
+
+    var dog = new Dog {
+        Name = "Pavlov",
+        Color = Colors.Brown,
+        Height = 33
+    };
+
+All 4 lines must be modified.
+
+	var dog = new Dog();
+    dog.Name = "Pavlov"; //Set breakpoint here
+    dog.Color = Colors.Brown;
+    dog.Height = 33;     
+
+##### Inserting breakpoint method with `Set[PropertyName]`
+
+    var dog = new Dog()
+        .SetName("Pavlov")
+        .SetColor(Colors.Brown)
+        .SetHeight(33);
+
+Only the first 2 lines must be modified.
+
+    var dog = new Dog();
+    dog = dog.SetName("Pavlov") //Set breakpoint here
+        .SetColor(Colors.Brown)
+        .SetHeight(33);
