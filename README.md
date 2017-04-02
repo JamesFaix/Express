@@ -1,4 +1,4 @@
-#Express
+# Express
 
 Express is a C# library for generating extension methods to allow imperative language features to be used more fluently in a functional style.
 
@@ -19,9 +19,9 @@ Express can generate `SetItem` extension methods for indexers with public setter
 Express can generate `Do[MethodName]` extension methods for public instance methods returning `void`.  These methods will call the method and then return the object containing the method.
 
 
-##Examples
+## Examples
 
-###Setting properties
+### Setting properties
 
 One common C# idiom that can be awkward when programming in a functional style is setting property values.
 
@@ -46,7 +46,7 @@ For example, say we need to find an address in a list of addresses, modify that 
 This is a very simple example, so the added benefit of Express is not that great, but it does eliminate the need for 1 local variable which had to be referenced 4 times before.
 ___
 
-###Setting indexers
+### Setting indexers
 
 Similar to property assignments, working with indexers in expression chains can be awkward.
 
@@ -85,7 +85,7 @@ This allows all imperative syntax to be avoided (blocks, loops, assignment).
 ____
 
 
-###Continuing after calling a `void` method
+### Continuing after calling a `void` method
 
 It is pretty common to call several methods on an object in series which all return `void`.  For example,
 
@@ -105,7 +105,7 @@ Alternately, the last call could be changed to `DoRollOver()` to return the dog 
 
 ___
 
-###Object and collection initializers
+### Object and collection initializers
 
 `Set[PropertyName]` methods can also be used in place of object initializer expressions.  For example,
 
@@ -149,7 +149,7 @@ Replacing initializers with these extension methods does not change the appearan
 
 4. Refactoring around the constructor is easier. If using initializers, refactoring to use a Factory instead of a constructor requires more work. Similarly, when debugging, in order to put a breakpoint between a constructor and a following initializer, the initializer must be rewritten as normal property assignments or `Add` method calls.  Using `Set` or `Do` methods simplifies these refactorings.
     
-######Refactoring with object initializer
+###### Refactoring with object initializer
 
     var dog = new Dog {
         Name = "Pavlov",
@@ -164,7 +164,7 @@ All 4 lines must be modified.
     dog.Color = Colors.Brown;
     dog.Height = 33;     
 
-######Refactoring with `Set[PropertyName]`
+###### Refactoring with `Set[PropertyName]`
 
     var dog = new Dog()
         .SetName("Pavlov")
