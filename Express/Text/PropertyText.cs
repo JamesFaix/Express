@@ -11,8 +11,8 @@ namespace Express {
         public string PropertyName { get; }
 
         public PropertyText(PropertyInfo property) {
-            TypeName = property.ReflectedType.FullyQualifiedName();
-            PropertyTypeName = property.PropertyType.FullyQualifiedName();
+            TypeName = property.ReflectedType.SafeName();
+            PropertyTypeName = property.PropertyType.SafeName();
             PropertyName = property.Name;
         }
     }

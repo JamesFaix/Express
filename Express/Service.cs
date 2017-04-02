@@ -31,7 +31,8 @@ namespace Express {
         internal IEnumerable<Type> AllTypes =>
             AssemblyPaths
                 .Select(Assembly.LoadFrom)
-                .SelectMany(Types);
+                .SelectMany(Types)
+                .Where(t => t.IsPublic);
 
         private IEnumerable<Type> Types(Assembly assembly) =>
             assembly.GetTypes()

@@ -15,8 +15,8 @@ namespace Express.Demo {
         //Indexer
         public int this[string name] { get { return 1; } set { } }
 
-        public void ExplodeInTMinus(int minutes, float seconds) {
+        public void ExplodeInTMinus(int minutes, float seconds) { }
 
-        }
+        public void SomethingCool<T>(T value) { }
     }
 }

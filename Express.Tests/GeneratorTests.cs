@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using Shouldly;
 
-namespace Express.Tests {
+namespace Express.Tests
+{
 
     [TestFixture]
-    public class GeneratorTests {
+    public class GeneratorTests
+    {
 
         [Test]
-        public void AssemblyPaths_ShouldReturnCorrectPaths() {
+        public void AssemblyPaths_ShouldReturnCorrectPaths()
+        {
             var assemblyNames = new Service(Config.Instance)
                 .AssemblyPaths
                 .Select(Path.GetFileName)
@@ -22,10 +26,11 @@ namespace Express.Tests {
         }
 
         [Test]
-        public void TypeProperties_ShouldReturnCorrectProperties() {
+        public void TypeProperties_ShouldReturnCorrectProperties()
+        {
             var typeProperties = new Service(Config.Instance)
-               .TypeText
-               .ToArray();
+                .TypeText
+                .ToArray();
 
             typeProperties.Length.ShouldBe(2);
 
@@ -34,6 +39,18 @@ namespace Express.Tests {
 
             var blackBoxType = typeProperties.Single(tp => tp.Type.Name == "BlackBox");
             blackBoxType.Properties.Count().ShouldBe(2);
+        }
+
+        [Test]
+        public void ShouldGetCorrectNameofGenericTypes()
+        {
+            var type = typeof(Dictionary<int, List<string>>);
+
+            var name = type.SafeName();
+
+            name.ShouldBe("global::System.Collections.Generic.Dictionary<" +
+                              "global::System.Int32, " +
+                              "global::System.Collections.Generic.List<global::System.String>>");
         }
     }
 }

@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Express {
+namespace Express
+{
 
-    class TypeText {
+    class TypeText
+    {
 
         public Type Type { get; }
-        
-        public TypeText(Type type, IExpressConfig config) {
+
+        public TypeText(Type type, IExpressConfig config)
+        {
             Type = type;
 
             Properties = type.GetSettableProperties()
@@ -20,8 +23,8 @@ namespace Express {
                 .Select(i => new IndexerText(i));
 
             Methods = type.GetVoidMethods()
-                 .Where(config.VoidMethodFilter)
-                 .Select(m => new MethodText(m));
+                .Where(config.VoidMethodFilter)
+                .Select(m => new MethodText(m));
         }
 
         public IEnumerable<PropertyText> Properties { get; }
@@ -30,12 +33,12 @@ namespace Express {
 
         public IEnumerable<MethodText> Methods { get; }
 
-        public bool IsEmpty => 
-            !Properties.Any() 
-            && !Indexers.Any() 
+        public bool IsEmpty =>
+            !Properties.Any()
+            && !Indexers.Any()
             && !Methods.Any();
 
-        public override string ToString() => 
+        public override string ToString() =>
             $"{Type} {{  }}";
     }
 }

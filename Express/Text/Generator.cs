@@ -1,12 +1,13 @@
 ﻿using System.Text;
 
-namespace Express {
-
-    internal static class Generator {
+namespace Express
+{
+    internal static class Generator
+    {
 
         public static string GetExtensions(TypeText type) =>
             new StringBuilder()
-                .AppendLine($"\t\t#region {type.Type.FullName}")
+                .AppendLine($"\t\t#region {type.Type.SafeName()}")
                 .AppendEach(type.Properties, GetSetPropertyExtension)
                 .AppendEach(type.Indexers, GetSetIndexExtension)
                 .AppendEach(type.Methods, GetDoMethodExtension)
@@ -34,8 +35,8 @@ namespace Express {
 ";
 
         static string GetDoMethodExtension(MethodText text) => $@"
-        public static {text.TypeName} Do{text.MethodName}(
-            this {text.TypeName} @this, {text.ParameterListWithTypes}) 
+        public static {text.TypeName} Do{text.MethodName}{text.TypeArguments}(
+            this {text.TypeName} @this{(text.ParameterListWithTypes.Length > 0 ? ", " : "")}{text.ParameterListWithTypes}) 
         {{
             @this.{text.MethodName}({text.ParameterList});
             return @this;

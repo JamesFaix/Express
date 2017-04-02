@@ -3,3 +3,8 @@ C:\Git\Express\Express\bin\Debug\Express.pdb
 C:\Git\Express\Express\obj\Debug\Express.dll
 C:\Git\Express\Express\obj\Debug\Express.pdb
 C:\Git\Express\Express\obj\Debug\Express.csprojResolveAssemblyReference.cache
+C:\Users\james.faix\Documents\GitHub\Express\Express\bin\Debug\Express.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express\bin\Debug\Express.pdb
+C:\Users\james.faix\Documents\GitHub\Express\Express\obj\Debug\Express.csprojResolveAssemblyReference.cache
+C:\Users\james.faix\Documents\GitHub\Express\Express\obj\Debug\Express.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express\obj\Debug\Express.pdb

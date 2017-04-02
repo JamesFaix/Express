@@ -2,24 +2,40 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Microsoft.CSharp;
 
-namespace Express {
+namespace Express
+{
 
-    static class ReflectionExtensions {
+    static class ReflectionExtensions
+    {
 
-        public static string FullyQualifiedName(this Type type) {
-            var typeArgs = type.GenericTypeArguments
-                .Select(FullyQualifiedName)
-                .ToDelimitedString(", ");
+        private static readonly CSharpCodeProvider _CodeProvider = new CSharpCodeProvider();
 
-            return type.IsGenericType
-                ? $"global::{type.FullName.LeftOf('`')}<{typeArgs}>"
-                : $"global::{type.FullName}";
+        public static string SafeName(this ParameterInfo parameter) =>
+            _CodeProvider.IsValidIdentifier(parameter.Name)
+                ? parameter.Name
+                : "@" + parameter.Name;
+
+        public static string SafeName(this Type type)
+        {
+            if (type.IsGenericType)
+            {
+                var t = type.GetGenericTypeDefinition();
+                var typeArgs = t.GenericTypeArguments
+                    .Select(SafeName)
+                    .ToDelimitedString(", ");
+
+                return $"global::{t.FullName.LeftOf('`')}<{typeArgs}>";
+            }
+
+            return $"global::{type.FullName}";
         }
 
         public static IEnumerable<PropertyInfo> GetSettableProperties(this Type type) =>
             type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => {
+                .Where(p =>
+                {
                     var setter = p.GetSetMethod();
                     return setter != null
                         && setter.GetParameters().Length == 1;
@@ -27,7 +43,8 @@ namespace Express {
 
         public static IEnumerable<PropertyInfo> GetSettableIndexers(this Type type) =>
             type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => {
+                .Where(p =>
+                {
                     var setter = p.GetSetMethod();
                     return setter != null
                         && setter.GetParameters().Length > 1;

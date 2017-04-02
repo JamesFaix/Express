@@ -16,20 +16,26 @@ namespace Express {
 
         public string ParameterListWithTypes { get; }
 
+        public string TypeArguments { get; }
+
         public MethodText(MethodInfo info) {
-            TypeName = info.ReflectedType.FullyQualifiedName();
+            TypeName = info.ReflectedType.SafeName();
             MethodName = info.Name;
-            ReturnTypeName = info.ReturnType.FullyQualifiedName();
+            ReturnTypeName = info.ReturnType.SafeName();
 
             var parameters = info.GetParameters();
 
             ParameterList = parameters
-                .Select(p => $"{p.Name}")
+                .Select(p => $"{p.SafeName()}")
                 .ToDelimitedString(", ");
 
             ParameterListWithTypes = parameters
-                .Select(p => $"{p.ParameterType.FullyQualifiedName()} {p.Name}")
+                .Select(p => $"{p.ParameterType.SafeName()} {p.SafeName()}")
                 .ToDelimitedString(", ");
+
+            TypeArguments = info.IsGenericMethod
+                ? $"<{info.GetGenericArguments().Select(t => t.SafeName()).ToDelimitedString(", ")}>"
+                : "";
         }
     }
 }

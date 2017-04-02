@@ -10,3 +10,15 @@ C:\Git\Express\Express.Tests\bin\Debug\nunit.framework.xml
 C:\Git\Express\Express.Tests\obj\Debug\Express.Tests.csprojResolveAssemblyReference.cache
 C:\Git\Express\Express.Tests\obj\Debug\Express.Tests.dll
 C:\Git\Express\Express.Tests\obj\Debug\Express.Tests.pdb
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\Express.Tests.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\Express.Tests.pdb
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\Express.Demo.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\Express.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\nunit.framework.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\Shouldly.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\Express.Demo.pdb
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\Express.pdb
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\bin\Debug\nunit.framework.xml
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\obj\Debug\Express.Tests.csprojResolveAssemblyReference.cache
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\obj\Debug\Express.Tests.dll
+C:\Users\james.faix\Documents\GitHub\Express\Express.Tests\obj\Debug\Express.Tests.pdb

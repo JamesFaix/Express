@@ -15,18 +15,18 @@ namespace Express {
         public string ParameterListWithTypes { get; }
 
         public IndexerText(PropertyInfo indexer) {
-            TypeName = indexer.ReflectedType.FullyQualifiedName();
-            PropertyTypeName = indexer.PropertyType.FullyQualifiedName();
+            TypeName = indexer.ReflectedType.SafeName();
+            PropertyTypeName = indexer.PropertyType.SafeName();
 
             var parameters = indexer.SetMethod.GetParameters();
             var indexes = parameters.Take(parameters.Count() - 1);
 
             ParameterList = indexes
-                .Select(p => $"{p.Name}")
+                .Select(p => $"{p.SafeName()}")
                 .ToDelimitedString(", ");
 
             ParameterListWithTypes = indexes
-                .Select(p => $"{p.ParameterType.FullyQualifiedName()} {p.Name}")
+                .Select(p => $"{p.ParameterType.SafeName()} {p.SafeName()}")
                 .ToDelimitedString(", ");
         }
     }

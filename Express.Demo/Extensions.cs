@@ -3,7 +3,7 @@ namespace Express.Demo {
 
     public static class Extensions {    
 
-		#region Express.Demo.Dog
+		#region global::Express.Demo.Dog
 
         public static global::Express.Demo.Dog SetColor(
             this global::Express.Demo.Dog @this, global::System.String value) 
@@ -20,7 +20,7 @@ namespace Express.Demo {
         }
 
         public static global::Express.Demo.Dog SetFriends(
-            this global::Express.Demo.Dog @this, global::System.Collections.Generic.List<global::Express.Demo.Dog> value) 
+            this global::Express.Demo.Dog @this, global::System.Collections.Generic.List<> value) 
         {
             @this.Friends = value;
             return @this;
@@ -28,10 +28,10 @@ namespace Express.Demo {
 
 		#endregion
 
-		#region Express.Demo.BlackBox
+		#region global::Express.Demo.BlackBox
 
         public static global::Express.Demo.BlackBox SetStuff(
-            this global::Express.Demo.BlackBox @this, global::System.Collections.Generic.Dictionary<global::System.Nullable<global::System.Int32>, global::System.Collections.Generic.IEnumerable<global::System.Threading.Tasks.Task<global::System.Boolean>>> value) 
+            this global::Express.Demo.BlackBox @this, global::System.Collections.Generic.Dictionary<> value) 
         {
             @this.Stuff = value;
             return @this;
@@ -55,6 +55,31 @@ namespace Express.Demo {
             this global::Express.Demo.BlackBox @this, global::System.Int32 minutes, global::System.Single seconds) 
         {
             @this.ExplodeInTMinus(minutes, seconds);
+            return @this;
+        }
+
+        public static global::Express.Demo.BlackBox DoSomethingCool<global::>(
+            this global::Express.Demo.BlackBox @this, global:: value) 
+        {
+            @this.SomethingCool(value);
+            return @this;
+        }
+
+		#endregion
+
+		#region global::Express.Demo.Widget<>
+
+        public static global::Express.Demo.Widget<> SetValue(
+            this global::Express.Demo.Widget<> @this, global:: value) 
+        {
+            @this.Value = value;
+            return @this;
+        }
+
+        public static global::Express.Demo.Widget<> DoSomething(
+            this global::Express.Demo.Widget<> @this, global:: value) 
+        {
+            @this.Something(value);
             return @this;
         }
 
