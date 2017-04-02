@@ -48,8 +48,9 @@ Temporary Items
 
 
 #======
-*.suo
 *.user
 bin
 obj
 packages
+*.suo
+.vs/Express/v14/.suo
