@@ -48,4 +48,8 @@ Temporary Items
 
 
 #======
-.vs/
+*.suo
+*.user
+bin
+obj
+packages

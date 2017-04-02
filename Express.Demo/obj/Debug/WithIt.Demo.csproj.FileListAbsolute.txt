@@ -1,7 +1,0 @@
-C:\Git\WithIt\WithIt.Demo\bin\Debug\WithIt.Demo.dll
-C:\Git\WithIt\WithIt.Demo\bin\Debug\WithIt.Demo.pdb
-C:\Git\WithIt\WithIt.Demo\bin\Debug\WithIt.dll
-C:\Git\WithIt\WithIt.Demo\bin\Debug\WithIt.pdb
-C:\Git\WithIt\WithIt.Demo\obj\Debug\WithIt.Demo.csprojResolveAssemblyReference.cache
-C:\Git\WithIt\WithIt.Demo\obj\Debug\WithIt.Demo.dll
-C:\Git\WithIt\WithIt.Demo\obj\Debug\WithIt.Demo.pdb
