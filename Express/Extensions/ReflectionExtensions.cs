@@ -17,19 +17,27 @@ namespace Express
                 ? parameter.Name
                 : "@" + parameter.Name;
 
-        public static string SafeName(this Type type)
-        {
-            if (type.IsGenericType)
-            {
-                var t = type.GetGenericTypeDefinition();
-                var typeArgs = t.GenericTypeArguments
+        public static string SafeName(this Type type) {
+            if (type.IsConstructedGenericType) {
+                var typeArgs = type.GenericTypeArguments
                     .Select(SafeName)
                     .ToDelimitedString(", ");
 
-                return $"global::{t.FullName.LeftOf('`')}<{typeArgs}>";
+                return $"global::{type.FullName.LeftOf('`')}<{typeArgs}>";
             }
+            else if (type.IsGenericType) {
+                var typeParams = ((TypeInfo)type).GenericTypeParameters
+                    .Select(SafeName)
+                    .ToDelimitedString(", ");
 
-            return $"global::{type.FullName}";
+                return $"global::{type.FullName.LeftOf('`')}<{typeParams}>";
+            }
+            else if (type.IsGenericParameter) {
+                return type.Name;
+            }
+            else {
+                return $"global::{type.FullName}";
+            }
         }
 
         public static IEnumerable<PropertyInfo> GetSettableProperties(this Type type) =>
@@ -54,5 +62,10 @@ namespace Express
             type.GetMethods(BindingFlags.Public | BindingFlags.Instance)
                 .Where(m => m.ReturnType == typeof(void)
                         && !m.IsSpecialName);
+
+        public static string ToGenericParameterList(this IEnumerable<Type> types) =>
+            types.Any()
+                ? $"<{types.Select(ReflectionExtensions.SafeName).ToDelimitedString(", ")}>"
+                : "";
     }
 }

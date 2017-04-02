@@ -1,14 +1,19 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
+using System;
+using System.Collections.Generic;
 
-namespace Express {
+namespace Express.Text {
 
-    class MethodText {
+    class MethodText : IMemberText {
 
-        public string TypeName { get; }
+        public string ExtendedType { get; }
 
-        public string MethodName { get; }
+        public string TypeParameters { get; }
+
+        public string MemberName { get; }
+
+        public string MemberTypeParameters { get; }
 
         public string ReturnTypeName { get; }
 
@@ -16,11 +21,17 @@ namespace Express {
 
         public string ParameterListWithTypes { get; }
 
-        public string TypeArguments { get; }
-
         public MethodText(MethodInfo info) {
-            TypeName = info.ReflectedType.SafeName();
-            MethodName = info.Name;
+            var type = info.ReflectedType;
+
+            ExtendedType = type.SafeName();
+
+            var methodTypeParameters = info.GetGenericArguments();
+            var classTypeParameters = ((TypeInfo)type).GenericTypeParameters;
+            MemberTypeParameters = methodTypeParameters.ToGenericParameterList();
+            TypeParameters = classTypeParameters.Concat(methodTypeParameters).ToGenericParameterList();
+
+            MemberName = info.Name;
             ReturnTypeName = info.ReturnType.SafeName();
 
             var parameters = info.GetParameters();
@@ -32,10 +43,6 @@ namespace Express {
             ParameterListWithTypes = parameters
                 .Select(p => $"{p.ParameterType.SafeName()} {p.SafeName()}")
                 .ToDelimitedString(", ");
-
-            TypeArguments = info.IsGenericMethod
-                ? $"<{info.GetGenericArguments().Select(t => t.SafeName()).ToDelimitedString(", ")}>"
-                : "";
         }
     }
 }

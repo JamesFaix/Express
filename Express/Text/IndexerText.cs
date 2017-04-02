@@ -2,21 +2,29 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Express {
+namespace Express.Text {
 
-    class IndexerText {
+    class IndexerText : IMemberText {
 
-        public string TypeName { get; }
+        public string ExtendedType { get; }
 
-        public string PropertyTypeName { get; }
+        public string TypeParameters { get; }
+
+        public string MemberName { get; }
+
+        public string PropertyType { get; }
 
         public string ParameterList { get; }
 
         public string ParameterListWithTypes { get; }
 
         public IndexerText(PropertyInfo indexer) {
-            TypeName = indexer.ReflectedType.SafeName();
-            PropertyTypeName = indexer.PropertyType.SafeName();
+            var type = indexer.ReflectedType;
+
+            ExtendedType = type.SafeName();
+            TypeParameters = ((TypeInfo)type).GenericTypeParameters.ToGenericParameterList();
+            MemberName = "Item";
+            PropertyType = indexer.PropertyType.SafeName();
 
             var parameters = indexer.SetMethod.GetParameters();
             var indexes = parameters.Take(parameters.Count() - 1);

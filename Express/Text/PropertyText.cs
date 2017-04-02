@@ -1,19 +1,24 @@
 ﻿using System.Reflection;
 
-namespace Express {
+namespace Express.Text {
 
-    class PropertyText {
+    class PropertyText : IMemberText {
 
-        public string TypeName { get; }
+        public string ExtendedType { get; }
 
-        public string PropertyTypeName { get; }
+        public string TypeParameters { get; }
 
-        public string PropertyName { get; }
+        public string MemberName { get; }
+
+        public string MemberType { get; }
 
         public PropertyText(PropertyInfo property) {
-            TypeName = property.ReflectedType.SafeName();
-            PropertyTypeName = property.PropertyType.SafeName();
-            PropertyName = property.Name;
+            var type = property.ReflectedType;
+
+            ExtendedType = type.SafeName();
+            TypeParameters = ((TypeInfo)type).GenericTypeParameters.ToGenericParameterList();
+            MemberName = property.Name;
+            MemberType = property.PropertyType.SafeName();
         }
     }
 }

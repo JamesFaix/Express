@@ -40,17 +40,5 @@ namespace Express.Tests
             var blackBoxType = typeProperties.Single(tp => tp.Type.Name == "BlackBox");
             blackBoxType.Properties.Count().ShouldBe(2);
         }
-
-        [Test]
-        public void ShouldGetCorrectNameofGenericTypes()
-        {
-            var type = typeof(Dictionary<int, List<string>>);
-
-            var name = type.SafeName();
-
-            name.ShouldBe("global::System.Collections.Generic.Dictionary<" +
-                              "global::System.Int32, " +
-                              "global::System.Collections.Generic.List<global::System.String>>");
-        }
     }
 }

@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Express
+namespace Express.Text
 {
-
     class TypeText
     {
-
         public Type Type { get; }
 
         public TypeText(Type type, IExpressConfig config)

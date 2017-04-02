@@ -37,6 +37,7 @@
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="IExpressConfig.cs" />
     <Compile Include="Text\IndexerText.cs" />
+    <Compile Include="Text\IMemberText.cs" />
     <Compile Include="Text\MethodText.cs" />
     <Compile Include="Text\PropertyText.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
